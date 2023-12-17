@@ -1,10 +1,12 @@
 package stack;
 
+import java.util.Arrays;
+
 public class CustomStack {
 	protected int[] data;
 	private static final int DEFAULT_SIZE = 10;
 	
-	int ptr = -1;
+	int top = -1;
 	
 	public CustomStack() {
 		this(DEFAULT_SIZE);
@@ -18,8 +20,8 @@ public class CustomStack {
 		if (isFull()) {
 			throw new Exception("Stack is full!!");
 		}
-		ptr++;
-		data[ptr] = item;
+		top++;
+		data[top] = item;
 		return true;
 	}
 	
@@ -27,8 +29,8 @@ public class CustomStack {
 		if (isEmpty()) {
 			throw new Exception("Stack is Empty!!!");
 		}
-		int removed = data[ptr];
-		ptr--;
+		int removed = data[top];
+		top--;
 		return removed;
 	}
 	
@@ -36,14 +38,21 @@ public class CustomStack {
 		if (isEmpty()) {
 			throw new Exception("Stack is Empty!!!");
 		}
-		return data[ptr];
+		return data[top];
 	}
 
 	public boolean isFull() {
-		return ptr == data.length - 1;
+		return top == data.length - 1; 
 	}
 	
 	public boolean isEmpty() {
-		return ptr == -1;
+		return top == -1;
+	}
+	
+	public void display() throws Exception {
+		if (isEmpty()) {
+			throw new Exception("Stack is Empty!!!");
+		}
+		System.out.println(Arrays.toString(data));
 	}
 }

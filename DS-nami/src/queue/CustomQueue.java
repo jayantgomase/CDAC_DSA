@@ -16,8 +16,6 @@ public class CustomQueue {
 		this.data = new int[size];
 	}
 	
-	
-	
 	public boolean isFull() {
 		return end == data.length;
 	}
